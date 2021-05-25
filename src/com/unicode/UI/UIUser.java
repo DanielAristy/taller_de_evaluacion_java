@@ -7,11 +7,16 @@ public abstract class UIUser {
     private static final String THEY_ARE_EQUAL = "Los numeros son iguales";
     private static final String GREATHER_THAN = " mayor que ";
     private static final String SMALLER_THAN = " menor que ";
+    private static final String PRODUCT_VALUE = "Ingrese el valor del producto con . decimal si lo desea";
+    private static final String PRODUCT_VALUE_WITH_IVA = "El valor del producto con IVA es ";
+    private static final double IVA = 0.21;
     private static final double PI = Math.PI;
     private static final Scanner sc = new Scanner(System.in);
+
     public static void showMenu(){
         greaterOrEqualNumber();
         calculateAreaOfACircle();
+        calculateIVA();
     }
 
     //Ejercicios del taler
@@ -33,7 +38,7 @@ public abstract class UIUser {
             showMessage(numberOne + SMALLER_THAN + numberTwo);
         }
     }
-
+    //3. Calcular el area del circulo
     private static void calculateAreaOfACircle(){
         showMessage("\nIngrese el radio del Círculo");
         getString();
@@ -41,6 +46,22 @@ public abstract class UIUser {
         double area = PI * getNumberSquared(radio);
         showMessage("El area del circulo es " + area);
         showMessage("");
+    }
+    //4. Precio del producto con IVA incluido
+    private static void calculateIVA(){
+        showMessage("\n" + PRODUCT_VALUE);
+        String price = getString();
+        double convertToDouble = parseDouble(price);
+        double result = getFullPrice(convertToDouble);
+        showMessage(PRODUCT_VALUE_WITH_IVA   + result);
+    }
+
+    private static double getFullPrice(double price) {
+        return price + getIva(price);
+    }
+
+    private static double getIva(double price) {
+        return price * IVA;
     }
 
     private static double getNumberSquared(String radio) {
