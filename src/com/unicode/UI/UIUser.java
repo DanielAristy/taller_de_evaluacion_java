@@ -20,6 +20,7 @@ public abstract class UIUser {
         calculateAreaOfACircle();
         calculateIVA();
         getOddAndEvenNumbers();
+        numberGreaterThanOrEqualToZero();
     }
 
     //Ejercicios del taler
@@ -95,6 +96,15 @@ public abstract class UIUser {
             getNumberIsOdd(i);
             getNumberIsEven(i);
         }
+    }
+
+    //7. Numero >= 0 sino volver a pedirlo hasta que pase
+    private static void numberGreaterThanOrEqualToZero(){
+        double response = 0;
+        do {
+            showMessage("Ingrese un valor para validar que no sea cero");
+            response = sc.nextInt();
+        }while (response <= 0.0);
     }
 
     private static boolean numberIsEven(int initial) {
