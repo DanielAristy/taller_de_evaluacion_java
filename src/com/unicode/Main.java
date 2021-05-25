@@ -6,7 +6,7 @@ import static com.unicode.UI.UIUser.*;
 
 public class Main {
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws Exception {
 	// write your code here
         showMenu();
     }

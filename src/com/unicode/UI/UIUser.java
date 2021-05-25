@@ -1,5 +1,7 @@
 package com.unicode.UI;
 
+import com.unicode.WorkingDay;
+
 import java.util.Scanner;
 
 public abstract class UIUser {
@@ -15,12 +17,13 @@ public abstract class UIUser {
     private static final int NUMBER_ONE_HUNDRED = 100;
     private static final Scanner sc = new Scanner(System.in);
 
-    public static void showMenu(){
+    public static void showMenu() throws Exception {
         greaterOrEqualNumber();
         calculateAreaOfACircle();
         calculateIVA();
         getOddAndEvenNumbers();
         numberGreaterThanOrEqualToZero();
+        getWorkDay();
     }
 
     //Ejercicios del taler
@@ -28,6 +31,7 @@ public abstract class UIUser {
     //1. Numero mayor o igual
     //2. Ingresar por consola cual de los numeros es mayor, menor o igual
     private static void greaterOrEqualNumber(){
+        showMessage("Mayor, menor ó igual");
         showMessage(ENTER_THE_VALUE);
         int numberOne = sc.nextInt();
         showMessage(ENTER_THE_VALUE);
@@ -105,6 +109,37 @@ public abstract class UIUser {
             showMessage("Ingrese un valor para validar que no sea cero");
             response = sc.nextInt();
         }while (response <= 0.0);
+    }
+
+    //8. obtener dia laborar de resto informarlo
+    private static void getWorkDay() throws Exception {
+        showMessage("Escriba el dia de la semana");
+        getString();
+        String weekDay = getString();
+        WorkingDay day = WorkingDay.valueOf(weekDay.toUpperCase());
+        switch (day){
+            case LUNES:
+            case MARTES:
+            case MIERCOLES:
+            case JUEVES:
+            case VIERNES:
+                getWorkingDay(day);
+                break;
+            case SABADO:
+            case DOMINGO:
+                nonWorkingDay(day);
+                break;
+            default:
+                throw new Exception("No es un dia de la semana");
+        }
+    }
+
+    private static void nonWorkingDay(WorkingDay day) {
+        showMessage(day.toString().toUpperCase() + " no es laboral");
+    }
+
+    private static void getWorkingDay(WorkingDay day) {
+        showMessage(day.toString().toUpperCase() + " es un dia laboral");
     }
 
     private static boolean numberIsEven(int initial) {
