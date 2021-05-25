@@ -7,9 +7,11 @@ public abstract class UIUser {
     private static final String THEY_ARE_EQUAL = "Los numeros son iguales";
     private static final String GREATHER_THAN = " mayor que ";
     private static final String SMALLER_THAN = " menor que ";
+    private static final double PI = Math.PI;
     private static final Scanner sc = new Scanner(System.in);
     public static void showMenu(){
         greaterOrEqualNumber();
+        calculateAreaOfACircle();
     }
 
     //Ejercicios del taler
@@ -30,6 +32,27 @@ public abstract class UIUser {
             showMessage(numberTwo + GREATHER_THAN + numberOne);
             showMessage(numberOne + SMALLER_THAN + numberTwo);
         }
+    }
+
+    private static void calculateAreaOfACircle(){
+        showMessage("\nIngrese el radio del Círculo");
+        getString();
+        String radio = getString();
+        double area = PI * getNumberSquared(radio);
+        showMessage("El area del circulo es " + area);
+        showMessage("");
+    }
+
+    private static double getNumberSquared(String radio) {
+        return Math.pow(parseDouble(radio),2);
+    }
+
+    private static double parseDouble(String valor) {
+        return Double.parseDouble(valor);
+    }
+
+    private static String getString(){
+        return sc.nextLine();
     }
 
     private static boolean theNumberIsGreater(int numberOne, int numberTwo) {
