@@ -61,10 +61,12 @@ public abstract class UIUser {
 
     //5. Numeros impares del 1 al 100;
     private static void getOddAndEvenNumbers(){
-        getNumberIsOdd(NUMBER_ONE, NUMBER_ONE_HUNDRED);
+        getNumberIsOddAndEvenWithWhile(NUMBER_ONE, NUMBER_ONE_HUNDRED);
+        getNumberIsOddAndEvenWithFor(NUMBER_ONE, NUMBER_ONE_HUNDRED);
     }
 
-    private static void getNumberIsOdd(int initial, int end) {
+    private static void getNumberIsOddAndEvenWithWhile(int initial, int end) {
+        showMessage("\nCon While");
         while (initial <= end){
             getNumberIsOdd(initial);
             getNumberIsEven(initial);
@@ -83,6 +85,15 @@ public abstract class UIUser {
         if (numberIsEven(initial)){
             showMessage("Numero par");
             System.out.println(initial);
+        }
+    }
+
+    //6. Numeros pares e impares con el ciclo for
+    private static void getNumberIsOddAndEvenWithFor(int numberOne, int numberOneHundred) {
+        showMessage("\nCon For");
+        for (int i = numberOne; i <= numberOneHundred; i++) {
+            getNumberIsOdd(i);
+            getNumberIsEven(i);
         }
     }
 
