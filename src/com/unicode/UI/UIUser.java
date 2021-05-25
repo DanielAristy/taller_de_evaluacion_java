@@ -11,12 +11,15 @@ public abstract class UIUser {
     private static final String PRODUCT_VALUE_WITH_IVA = "El valor del producto con IVA es ";
     private static final double IVA = 0.21;
     private static final double PI = Math.PI;
+    private static final int NUMBER_ONE = 1;
+    private static final int NUMBER_ONE_HUNDRED = 100;
     private static final Scanner sc = new Scanner(System.in);
 
     public static void showMenu(){
         greaterOrEqualNumber();
         calculateAreaOfACircle();
         calculateIVA();
+        getOddAndEvenNumbers();
     }
 
     //Ejercicios del taler
@@ -54,6 +57,41 @@ public abstract class UIUser {
         double convertToDouble = parseDouble(price);
         double result = getFullPrice(convertToDouble);
         showMessage(PRODUCT_VALUE_WITH_IVA   + result);
+    }
+
+    //5. Numeros impares del 1 al 100;
+    private static void getOddAndEvenNumbers(){
+        getNumberIsOdd(NUMBER_ONE, NUMBER_ONE_HUNDRED);
+    }
+
+    private static void getNumberIsOdd(int initial, int end) {
+        while (initial <= end){
+            getNumberIsOdd(initial);
+            getNumberIsEven(initial);
+            initial++;
+        }
+    }
+
+    private static void getNumberIsOdd(int initial) {
+        if (numberIsOdd(initial)){
+            showMessage("Numero impar");
+            System.out.println(initial);
+        }
+    }
+
+    private static void getNumberIsEven(int initial) {
+        if (numberIsEven(initial)){
+            showMessage("Numero par");
+            System.out.println(initial);
+        }
+    }
+
+    private static boolean numberIsEven(int initial) {
+        return initial % 2 == 0;
+    }
+
+    private static boolean numberIsOdd(int initial) {
+        return initial % 2 != 0;
     }
 
     private static double getFullPrice(double price) {
