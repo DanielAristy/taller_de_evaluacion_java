@@ -13,6 +13,18 @@ public abstract class UIUser {
     private static final String PRODUCT_VALUE_WITH_IVA = "El valor del producto con IVA es ";
     private static final String SMILE = "La sonrisa sera la mejor arma contra la tristeza";
     private static final String EMPATHY = ", la empatia es la participacion afectiva de una persona en una realidad ajena a ella.";
+    private static final String GREATER_LESS_OR_EQUAL = "Mayor, menor ó igual";
+    private static final String CIRCLE_RADIO = "\nIngrese el radio del Círculo";
+    private static final String CIRCLE_AREA = "El area del circulo es ";
+    private static final String WITH_WHILE = "\nCon While";
+    private static final String ODD_NUMBER = "Numero impar";
+    private static final String EVEN_NUMBER = "Numero par";
+    private static final String WITH_FOR = "\nCon For";
+    private static final String DON_T_BE_ZERO  = "Ingrese un valor para validar que no sea cero";
+    private static final String WEEKDAY = "Escriba el dia de la semana";
+    private static final String NOT_A_DAY_OF_THE_WEEK = "No es un dia de la semana";
+    private static final String IT_IS_NOT_WORK = " no es laboral";
+    private static final String IT_S_A_BUSINESS_DAY = " es un dia laboral";
     private static final String CHARACTER_TO_REPLACE = "a";
     private static final String REPLACEMENT_CHARACTER = "e";
     private static final double IVA = 0.21;
@@ -20,6 +32,7 @@ public abstract class UIUser {
     private static final int NUMBER_ONE = 1;
     private static final int NUMBER_ONE_HUNDRED = 100;
     private static final Scanner sc = new Scanner(System.in);
+
 
     public static void showMenu() throws Exception {
 //        greaterOrEqualNumber();
@@ -30,13 +43,11 @@ public abstract class UIUser {
 //        getWorkDay();
         getModifiedString();
     }
-
     //Ejercicios del taler
-
     //1. Numero mayor o igual
     //2. Ingresar por consola cual de los numeros es mayor, menor o igual
     private static void greaterOrEqualNumber(){
-        showMessage("Mayor, menor ó igual");
+        showMessage(GREATER_LESS_OR_EQUAL);
         showMessage(ENTER_THE_VALUE);
         int numberOne = sc.nextInt();
         showMessage(ENTER_THE_VALUE);
@@ -53,11 +64,11 @@ public abstract class UIUser {
     }
     //3. Calcular el area del circulo
     private static void calculateAreaOfACircle(){
-        showMessage("\nIngrese el radio del Círculo");
+        showMessage(CIRCLE_RADIO);
         getString();
         String radio = getString();
         double area = PI * getNumberSquared(radio);
-        showMessage("El area del circulo es " + area);
+        showMessage(CIRCLE_AREA + area);
         showMessage("");
     }
     //4. Precio del producto con IVA incluido
@@ -68,57 +79,50 @@ public abstract class UIUser {
         double result = getFullPrice(convertToDouble);
         showMessage(PRODUCT_VALUE_WITH_IVA   + result);
     }
-
     //5. Numeros impares del 1 al 100;
     private static void getOddAndEvenNumbers(){
         getNumberIsOddAndEvenWithWhile(NUMBER_ONE, NUMBER_ONE_HUNDRED);
         getNumberIsOddAndEvenWithFor(NUMBER_ONE, NUMBER_ONE_HUNDRED);
     }
-
     private static void getNumberIsOddAndEvenWithWhile(int initial, int end) {
-        showMessage("\nCon While");
+        showMessage(WITH_WHILE);
         while (initial <= end){
             getNumberIsOdd(initial);
             getNumberIsEven(initial);
             initial++;
         }
     }
-
     private static void getNumberIsOdd(int initial) {
         if (numberIsOdd(initial)){
-            showMessage("Numero impar");
+            showMessage(ODD_NUMBER);
             System.out.println(initial);
         }
     }
-
     private static void getNumberIsEven(int initial) {
         if (numberIsEven(initial)){
-            showMessage("Numero par");
+            showMessage(EVEN_NUMBER);
             System.out.println(initial);
         }
     }
-
     //6. Numeros pares e impares con el ciclo for
     private static void getNumberIsOddAndEvenWithFor(int numberOne, int numberOneHundred) {
-        showMessage("\nCon For");
+        showMessage(WITH_FOR);
         for (int i = numberOne; i <= numberOneHundred; i++) {
             getNumberIsOdd(i);
             getNumberIsEven(i);
         }
     }
-
     //7. Numero >= 0 sino volver a pedirlo hasta que pase
     private static void numberGreaterThanOrEqualToZero(){
         double response = 0;
         do {
-            showMessage("Ingrese un valor para validar que no sea cero");
+            showMessage(DON_T_BE_ZERO);
             response = sc.nextInt();
         }while (response <= 0.0);
     }
-
     //8. obtener dia laborar de resto informarlo
     private static void getWorkDay() throws Exception {
-        showMessage("Escriba el dia de la semana");
+        showMessage(WEEKDAY);
         getString();
         String weekDay = getString();
         WorkingDay day = WorkingDay.valueOf(weekDay.toUpperCase());
@@ -135,10 +139,9 @@ public abstract class UIUser {
                 nonWorkingDay(day);
                 break;
             default:
-                throw new Exception("No es un dia de la semana");
+                throw new Exception(NOT_A_DAY_OF_THE_WEEK);
         }
     }
-
     //9. Obtener cadena y agregar en las letras que coincidad con a
     //cambiarlas por e y sumarle la cadena que queramos
     private static void getModifiedString(){//Obtener cadena modificada
@@ -148,57 +151,46 @@ public abstract class UIUser {
         String modifiedText = getTextConcatenation(replaceCharacter, additionalText);
         showMessage(modifiedText);
     }
+    //10.
     private static String getTextConcatenation(String text, String additionalText){
         return text.concat(additionalText);
     }
     private static String getReplaceCharacterInText(String text,String characterToReplace, String replacementCharacter) {
         return text.replace(characterToReplace, replacementCharacter);
     }
-
     private static void nonWorkingDay(WorkingDay day) {
-        showMessage(day.toString().toUpperCase() + " no es laboral");
+        showMessage(day.toString().toUpperCase() + IT_IS_NOT_WORK);
     }
-
     private static void getWorkingDay(WorkingDay day) {
-        showMessage(day.toString().toUpperCase() + " es un dia laboral");
+        showMessage(day.toString().toUpperCase() + IT_S_A_BUSINESS_DAY);
     }
-
     private static boolean numberIsEven(int initial) {
         return initial % 2 == 0;
     }
-
     private static boolean numberIsOdd(int initial) {
         return initial % 2 != 0;
     }
-
     private static double getFullPrice(double price) {
         return price + getIva(price);
     }
-
     private static double getIva(double price) {
         return price * IVA;
     }
-
     private static double getNumberSquared(String radio) {
         return Math.pow(parseDouble(radio),2);
     }
-
     private static double parseDouble(String valor) {
         return Double.parseDouble(valor);
     }
-
     private static String getString(){
         return sc.nextLine();
     }
-
     private static boolean theNumberIsGreater(int numberOne, int numberTwo) {
         return numberOne > numberTwo;
     }
-
     private static boolean isEquals(int numberOne, int numberTwo) {
         return numberOne == numberTwo;
     }
-
     private static void showMessage(String message){
         System.out.println(message);
     }
