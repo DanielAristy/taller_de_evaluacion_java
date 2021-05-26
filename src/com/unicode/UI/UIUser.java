@@ -9,12 +9,12 @@ public abstract class UIUser {
     private static final String THEY_ARE_EQUAL = "Los numeros son iguales";
     private static final String GREATHER_THAN = " mayor que ";
     private static final String SMALLER_THAN = " menor que ";
-    private static final String PRODUCT_VALUE = "Ingrese el valor del producto con . decimal si lo desea";
+    private static final String PRODUCT_VALUE = "Calcular el valor de un producto mas el iva, ingrese el valor del producto con . decimal";
     private static final String PRODUCT_VALUE_WITH_IVA = "El valor del producto con IVA es ";
     private static final String SMILE = "La sonrisa sera la mejor arma contra la tristeza";
     private static final String EMPATHY = ", la empatia es la participacion afectiva de una persona en una realidad ajena a ella.";
-    private static final String GREATER_LESS_OR_EQUAL = "Mayor, menor ó igual";
-    private static final String CIRCLE_RADIO = "\nIngrese el radio del Círculo";
+    private static final String GREATER_LESS_OR_EQUAL = "Ingresa dos valores y se devolvera si es Mayor, menor ó igual\n";
+    private static final String CIRCLE_RADIO = "\nCalcular el radio del Círculo, ingrese el radio";
     private static final String CIRCLE_AREA = "El area del circulo es ";
     private static final String WITH_WHILE = "\nCon While";
     private static final String ODD_NUMBER = "Numero impar";
@@ -25,6 +25,9 @@ public abstract class UIUser {
     private static final String NOT_A_DAY_OF_THE_WEEK = "No es un dia de la semana";
     private static final String IT_IS_NOT_WORK = " no es laboral";
     private static final String IT_S_A_BUSINESS_DAY = " es un dia laboral";
+    private static final String ADDITIONAL_TEXT = " y se adiciona un texto adicional\n";
+    private static final String CHARACTER_CHANGE = "Se hace el cambio de un caracter identificado por la letra a por e en el texto";
+    private static final String TEXT_WITHOUT_SPACES = "\nIngrese un texto con espacios, para devolverle un texto sin espacios";
     private static final String CHARACTER_TO_REPLACE = "a";
     private static final String REPLACEMENT_CHARACTER = "e";
     private static final double IVA = 0.21;
@@ -42,6 +45,7 @@ public abstract class UIUser {
 //        numberGreaterThanOrEqualToZero();
 //        getWorkDay();
         getModifiedString();
+//        getTextWithoutSpaces();
     }
     //Ejercicios del taler
     //1. Numero mayor o igual
@@ -111,6 +115,7 @@ public abstract class UIUser {
             getNumberIsOdd(i);
             getNumberIsEven(i);
         }
+        showMessage("");
     }
     //7. Numero >= 0 sino volver a pedirlo hasta que pase
     private static void numberGreaterThanOrEqualToZero(){
@@ -145,13 +150,20 @@ public abstract class UIUser {
     //9. Obtener cadena y agregar en las letras que coincidad con a
     //cambiarlas por e y sumarle la cadena que queramos
     private static void getModifiedString(){//Obtener cadena modificada
+        showMessage(CHARACTER_CHANGE);
         String text = SMILE;
+        showMessage(text + ADDITIONAL_TEXT);
         String additionalText = EMPATHY;
         String replaceCharacter = getReplaceCharacterInText(text,CHARACTER_TO_REPLACE,REPLACEMENT_CHARACTER);
         String modifiedText = getTextConcatenation(replaceCharacter, additionalText);
         showMessage(modifiedText);
     }
-    //10.
+    //10. Capturar el texto por consola y devolverlo sin espacios
+    private static void getTextWithoutSpaces(){
+        showMessage(TEXT_WITHOUT_SPACES);
+        String text = getString();
+        showMessage(getReplaceCharacterInText(text," ",""));
+    }
     private static String getTextConcatenation(String text, String additionalText){
         return text.concat(additionalText);
     }
