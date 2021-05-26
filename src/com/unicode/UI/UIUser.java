@@ -11,6 +11,10 @@ public abstract class UIUser {
     private static final String SMALLER_THAN = " menor que ";
     private static final String PRODUCT_VALUE = "Ingrese el valor del producto con . decimal si lo desea";
     private static final String PRODUCT_VALUE_WITH_IVA = "El valor del producto con IVA es ";
+    private static final String SMILE = "La sonrisa sera la mejor arma contra la tristeza";
+    private static final String EMPATHY = ", la empatia es la participacion afectiva de una persona en una realidad ajena a ella.";
+    private static final String CHARACTER_TO_REPLACE = "a";
+    private static final String REPLACEMENT_CHARACTER = "e";
     private static final double IVA = 0.21;
     private static final double PI = Math.PI;
     private static final int NUMBER_ONE = 1;
@@ -18,12 +22,13 @@ public abstract class UIUser {
     private static final Scanner sc = new Scanner(System.in);
 
     public static void showMenu() throws Exception {
-        greaterOrEqualNumber();
-        calculateAreaOfACircle();
-        calculateIVA();
-        getOddAndEvenNumbers();
-        numberGreaterThanOrEqualToZero();
-        getWorkDay();
+//        greaterOrEqualNumber();
+//        calculateAreaOfACircle();
+//        calculateIVA();
+//        getOddAndEvenNumbers();
+//        numberGreaterThanOrEqualToZero();
+//        getWorkDay();
+        getModifiedString();
     }
 
     //Ejercicios del taler
@@ -132,6 +137,22 @@ public abstract class UIUser {
             default:
                 throw new Exception("No es un dia de la semana");
         }
+    }
+
+    //9. Obtener cadena y agregar en las letras que coincidad con a
+    //cambiarlas por e y sumarle la cadena que queramos
+    private static void getModifiedString(){//Obtener cadena modificada
+        String text = SMILE;
+        String additionalText = EMPATHY;
+        String replaceCharacter = getReplaceCharacterInText(text,CHARACTER_TO_REPLACE,REPLACEMENT_CHARACTER);
+        String modifiedText = getTextConcatenation(replaceCharacter, additionalText);
+        showMessage(modifiedText);
+    }
+    private static String getTextConcatenation(String text, String additionalText){
+        return text.concat(additionalText);
+    }
+    private static String getReplaceCharacterInText(String text,String characterToReplace, String replacementCharacter) {
+        return text.replace(characterToReplace, replacementCharacter);
     }
 
     private static void nonWorkingDay(WorkingDay day) {
