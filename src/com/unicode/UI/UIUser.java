@@ -2,6 +2,12 @@ package com.unicode.UI;
 
 import com.unicode.WorkingDay;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public abstract class UIUser {
@@ -47,7 +53,8 @@ public abstract class UIUser {
 //        getModifiedString();
 //        getTextWithoutSpaces();
 //        getPhraseLengthAndNumberOfVowels();
-        getEqualityOrDifferenceBetweenLetters();
+//        getEqualityOrDifferenceBetweenLetters();
+        getDateAndTimeInFormat();
     }
     //Ejercicios del taler
     //1. Numero mayor o igual
@@ -196,6 +203,12 @@ public abstract class UIUser {
     }
     private static void getAmountOfVowels(String phrase) {
         getVowels(phrase);
+    }
+    //13. Calcular la fecha y hora de un formato determinado
+    private static void getDateAndTimeInFormat(){
+        Date date = new Date();
+        DateFormat dateFormat = new SimpleDateFormat("YYYY/MM/DD HH:MM:SS");
+        showMessage("Fecha actual y hora: " + dateFormat.format(date));
     }
     //Obtener la cantidad de palabras
     private static void getVowels(String phrase) {
