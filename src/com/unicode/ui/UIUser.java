@@ -283,7 +283,36 @@ public abstract class UIUser {
         showMessage("Vocal u: "+ u);
     }
     private static void validateUserInformation(){
+        getPerson1();
+        getPersonWithSetter();
+    }
 
+    private static void getPerson1(){
+        showMessage("Datos de la persona 1\n");
+        showMessage("Ingresa tu nombre");
+        String name = getString();
+        showMessage("Ingresa tu edad");
+        int age = getNumber();
+//        showMessage("Ingresa el sexo (M,F)");
+//        String sexo = getString();
+        Person person = new Person(name,age,'F');
+        person.checkSex(person.getSex());
+        person.calculateDNINumber();
+        System.out.println(person);
+
+    }
+    private static void getPersonWithSetter() {
+        showMessage("\nDatos de la persona 2\n");
+        Person person = new Person();
+        person.setName("Jorge perez");
+        person.setWeight(80);
+        person.setHeight(1.70);
+        person.setSex('F');
+        person.calculateIMC();
+        person.checkSex(person.getSex());
+        person.calculateDNINumber();
+//        person.calculateDNINumber();
+        System.out.println(person);
     }
 
     private static double getDouble() {

@@ -4,11 +4,12 @@ public class Person {
 
     private String name = "";
     private int age = 0;
-    private String DNI;
+    private String DNI = "";
     private char sex = SEX_DEFAULT;
     private double weight = 0;
     private double height = 0;
     private static final char SEX_DEFAULT = 'H';
+    private static final String letras[]= {"-T","-R","-W","-A","-G","-M","-Y","-F","-P","-D","-X","-B","-N","-J","-Z","-S","-Q","-V","-H","-L","-C","-K","-E"};
 
     public Person() {
     }
@@ -28,43 +29,57 @@ public class Person {
         this.height = height;
     }
 
-    private int calculateIMC(){
-        int value = 0;
-        int idealWeight = getIdealWeight();
+    public int calculateIMC(){
+        double idealWeight = getIdealWeight();
         if (idealWeight < 20){
-            value = -1;
+            idealWeight = -1;
+            System.out.println("Estas en su peso ideal");
         }else if(idealWeight <= 25){
-            value = 0;
+            idealWeight = 0;
+            System.out.println("Está por debajo de su peso idea");
         }else{
-            value = 1;
+            idealWeight = 1;
+            System.out.println("Tiene sobrepeso");
         }
-        return value;
+        return (int) idealWeight;
     }
-    private int getIdealWeight() {
-        return (int) (this.weight / (Math.pow(this.height,2)));
+
+    private double getIdealWeight() {
+        return  this.weight / (Math.pow(this.height,2));
     }
 
     private boolean isOlder(){
         return this.age > 18;
     }
 
-    private void checkSex(char sex){
-
+    public void checkSex(char sex){
+        if (sex == SEX_DEFAULT || sex == 'F') this.sex = sex;
+        else this.sex = SEX_DEFAULT;
     }
-    private String generatDNI(){
+    public String generateDNI(){
+
         String DNI = "";
+
+        for (int i = 0; i < letras.length; i++) {
+            DNI = letras[i];
+            break;
+        }
         return DNI;
+    }
+
+    public void calculateDNINumber(){
+        this.DNI = "" + (int) (Math.random()*99999999) + "" + generateDNI();
     }
 
     @Override
     public String toString() {
         return "Person{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", DNI='" + DNI + '\'' +
-                ", sex=" + sex +
-                ", weight=" + weight +
-                ", height=" + height +
+                " name= '" + name + '\'' +
+                ", age = " + age +
+                ", DNI = '" + DNI + '\'' +
+                ", sex = " + sex +
+                ", weight = " + weight +
+                ", height = " + height +
                 '}';
     }
 
