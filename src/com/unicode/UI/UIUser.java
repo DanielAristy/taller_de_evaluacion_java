@@ -38,15 +38,16 @@ public abstract class UIUser {
 
 
     public static void showMenu() throws Exception {
-        greaterOrEqualNumber();
-        calculateAreaOfACircle();
-        calculateIVA();
-        getOddAndEvenNumbers();
-        numberGreaterThanOrEqualToZero();
-        getWorkDay();
-        getModifiedString();
-        getTextWithoutSpaces();
-        getPhraseLengthAndNumberOfVowels();
+//        greaterOrEqualNumber();
+//        calculateAreaOfACircle();
+//        calculateIVA();
+//        getOddAndEvenNumbers();
+//        numberGreaterThanOrEqualToZero();
+//        getWorkDay();
+//        getModifiedString();
+//        getTextWithoutSpaces();
+//        getPhraseLengthAndNumberOfVowels();
+        getEqualityOrDifferenceBetweenLetters();
     }
     //Ejercicios del taler
     //1. Numero mayor o igual
@@ -180,11 +181,23 @@ public abstract class UIUser {
         showMessage("La longitud de la frase: "+ phraseLength + " caracteres");
         getAmountOfVowels(phrase);
     }
+    //12. Igualdad o diferencia entre letras
+    private static void getEqualityOrDifferenceBetweenLetters(){
+        showMessage("Ingresa una letra: ");
+        String letterOne = getString();
+        showMessage("Ingresa una letra: ");
+        String letterTwo = getString();
 
+        if (letterOne.equalsIgnoreCase(letterTwo)){
+            showMessage("Las letra " + letterOne +" es igual "+ letterTwo);
+        }else {
+            showMessage("Las letra " + letterOne +" es diferente "+ letterTwo);
+        }
+    }
     private static void getAmountOfVowels(String phrase) {
         getVowels(phrase);
     }
-
+    //Obtener la cantidad de palabras
     private static void getVowels(String phrase) {
         int a = 0, e = 0, i = 0, o = 0, u = 0;
         for (Character character: phrase.toCharArray()) {
