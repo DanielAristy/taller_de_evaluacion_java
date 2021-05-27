@@ -20,7 +20,7 @@ public abstract class UIUser {
     private static final String ODD_NUMBER = "Numero impar";
     private static final String EVEN_NUMBER = "Numero par";
     private static final String WITH_FOR = "\nCon For";
-    private static final String DON_T_BE_ZERO  = "Ingrese un valor para validar que no sea cero";
+    private static final String DON_T_BE_ZERO  = "Ingrese un valor para validar que sea mayor que cero";
     private static final String WEEKDAY = "Escriba el dia de la semana";
     private static final String NOT_A_DAY_OF_THE_WEEK = "No es un dia de la semana";
     private static final String IT_IS_NOT_WORK = " no es laboral";
@@ -38,14 +38,15 @@ public abstract class UIUser {
 
 
     public static void showMenu() throws Exception {
-//        greaterOrEqualNumber();
-//        calculateAreaOfACircle();
-//        calculateIVA();
-//        getOddAndEvenNumbers();
-//        numberGreaterThanOrEqualToZero();
-//        getWorkDay();
+        greaterOrEqualNumber();
+        calculateAreaOfACircle();
+        calculateIVA();
+        getOddAndEvenNumbers();
+        numberGreaterThanOrEqualToZero();
+        getWorkDay();
         getModifiedString();
-//        getTextWithoutSpaces();
+        getTextWithoutSpaces();
+        getPhraseLengthAndNumberOfVowels();
     }
     //Ejercicios del taler
     //1. Numero mayor o igual
@@ -163,6 +164,61 @@ public abstract class UIUser {
         showMessage(TEXT_WITHOUT_SPACES);
         String text = getString();
         showMessage(getReplaceCharacterInText(text," ",""));
+    }
+    //11. Calcular la longitud de una frase y la cantidad de vocales que hay de cada una
+    /** ASCII
+     * a -> 97
+     * e -> 101
+     * i -> 105
+     * o -> 111
+     * u -> 117
+     * */
+    private static void getPhraseLengthAndNumberOfVowels(){
+        showMessage("\nIngrese una frase");
+        String phrase = getString();
+        int phraseLength = getPhraseLength(phrase);
+        showMessage("La longitud de la frase: "+ phraseLength + " caracteres");
+        getAmountOfVowels(phrase);
+    }
+
+    private static void getAmountOfVowels(String phrase) {
+        getVowels(phrase);
+    }
+
+    private static void getVowels(String phrase) {
+        int a = 0, e = 0, i = 0, o = 0, u = 0;
+        for (Character character: phrase.toCharArray()) {
+            switch (character){
+                case 'a':
+                    a++;
+                    break;
+                case 'e':
+                    e++;
+                    break;
+                case 'i':
+                    i++;
+                    break;
+                case 'o':
+                    o++;
+                    break;
+                case 'u':
+                    u++;
+                    break;
+            }
+        }
+        showVowels(a, e, i, o, u);
+    }
+    //Mostrar la cantidad de vocales que aparecen y de cada una
+    private static void showVowels(int a, int e, int i, int o, int u) {
+        showMessage("Cantidad de vocales en la frase: " + (a+e+i+o+u));
+        showMessage("Vocal a: "+ a);
+        showMessage("Vocal e: "+ e);
+        showMessage("Vocal i: "+ i);
+        showMessage("Vocal o: "+ o);
+        showMessage("Vocal u: "+ u);
+    }
+    private static int getPhraseLength(String text){
+        return text.length();
     }
     private static String getTextConcatenation(String text, String additionalText){
         return text.concat(additionalText);
