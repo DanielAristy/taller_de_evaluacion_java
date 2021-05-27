@@ -1,8 +1,6 @@
 package com.unicode;
 
-import com.unicode.UI.UIUser;
-
-import static com.unicode.UI.UIUser.*;
+import static com.unicode.ui.UIUser.*;
 
 public class Main {
 

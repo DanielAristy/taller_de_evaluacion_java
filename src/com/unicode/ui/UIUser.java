@@ -1,12 +1,10 @@
-package com.unicode.UI;
+package com.unicode.ui;
 
 import com.unicode.WorkingDay;
+import com.unicode.model.Person;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -55,7 +53,8 @@ public abstract class UIUser {
 //        getPhraseLengthAndNumberOfVowels();
 //        getEqualityOrDifferenceBetweenLetters();
 //        getDateAndTimeInFormat();
-        showOptionsMenu();
+//        showOptionsMenu();
+        validateUserInformation();
     }
     //Ejercicios del taler
     //1. Numero mayor o igual
@@ -229,7 +228,8 @@ public abstract class UIUser {
         int response;
         showMessage("\nElie una opción");
         response = sc.nextInt();
-        if (isEght(response)) showMessage("Muchas gracias por visitarnos");
+        if (isEght(response)) showMessage("Muchas gracias por visitarnos!");
+        else showMessage("OPCION INCORRECTO\n");
         return response;
     }
 
@@ -282,6 +282,14 @@ public abstract class UIUser {
         showMessage("Vocal o: "+ o);
         showMessage("Vocal u: "+ u);
     }
+    private static void validateUserInformation(){
+
+    }
+
+    private static double getDouble() {
+        return sc.nextDouble();
+    }
+
     private static int getPhraseLength(String text){
         return text.length();
     }
@@ -317,6 +325,9 @@ public abstract class UIUser {
     }
     private static String getString(){
         return sc.nextLine();
+    }
+    private static int getNumber(){
+        return sc.nextInt();
     }
     private static boolean theNumberIsGreater(int numberOne, int numberTwo) {
         return numberOne > numberTwo;
