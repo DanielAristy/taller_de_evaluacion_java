@@ -54,7 +54,8 @@ public abstract class UIUser {
 //        getTextWithoutSpaces();
 //        getPhraseLengthAndNumberOfVowels();
 //        getEqualityOrDifferenceBetweenLetters();
-        getDateAndTimeInFormat();
+//        getDateAndTimeInFormat();
+        showOptionsMenu();
     }
     //Ejercicios del taler
     //1. Numero mayor o igual
@@ -206,9 +207,47 @@ public abstract class UIUser {
     }
     //13. Calcular la fecha y hora de un formato determinado
     private static void getDateAndTimeInFormat(){
+        showMessage("");
         Date date = new Date();
         DateFormat dateFormat = new SimpleDateFormat("YYYY/MM/DD HH:MM:SS");
         showMessage("Fecha actual y hora: " + dateFormat.format(date));
+    }
+    //14.
+    private static void getNumbersUpToOneThousand(){
+
+    }
+    //15. Mostrar
+    private static void showOptionsMenu(){
+        int response = 8;
+        do {
+            getOptions();
+            response = getResponse();
+        }while (response != 8);
+    }
+
+    private static int getResponse() {
+        int response;
+        showMessage("\nElie una opción");
+        response = sc.nextInt();
+        if (isEght(response)) showMessage("Muchas gracias por visitarnos");
+        return response;
+    }
+
+    private static boolean isEght(int response) {
+        return response == 8;
+    }
+
+    //Obtener opciones
+    private static void getOptions(){
+        showMessage("****** GESTION CINEMATOGRÁFICA ********");
+        showMessage("1-NUEVO ACTOR");
+        showMessage("2-BUSCAR ACTOR");
+        showMessage("3-ELIMINAR ACTOR");
+        showMessage("4-MODIFICAR ACTOR");
+        showMessage("5-VER TODOS LOS ACTORES");
+        showMessage("6- VER PELICULAS DE LOS ACTORES");
+        showMessage("7-VER CATEGORIA DE LAS PELICULAS DE LOS ACTORES");
+        showMessage("8-SALIR");
     }
     //Obtener la cantidad de palabras
     private static void getVowels(String phrase) {
