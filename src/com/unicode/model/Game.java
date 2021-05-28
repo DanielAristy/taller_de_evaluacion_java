@@ -90,13 +90,10 @@ public class Game implements Deliverable {
 
     @Override
     public boolean compareTo(Object a) {
-        boolean returnValue;
+        return compareEstimated((Game) a);
+    }
 
-        if(this.estimatedHours > ((Game)a).estimatedHours){
-            returnValue = true;
-        }else{
-            returnValue = false;
-        }
-        return returnValue;
+    private boolean compareEstimated(Game a) {
+        return this.estimatedHours > a.estimatedHours;
     }
 }

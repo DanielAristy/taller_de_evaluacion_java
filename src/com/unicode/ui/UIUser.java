@@ -1,10 +1,7 @@
 package com.unicode.ui;
 
 import com.unicode.WorkingDay;
-import com.unicode.model.HomeAppliance;
-import com.unicode.model.Person;
-import com.unicode.model.Tv;
-import com.unicode.model.WashingMachine;
+import com.unicode.model.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -60,6 +57,7 @@ public abstract class UIUser {
 //        showOptionsMenu();
 //        validateUserInformation();
         getHomeAppliance();
+        getSeriesAndGames();
     }
     //Ejercicios del taler
     //1. Numero mayor o igual
@@ -353,6 +351,96 @@ public abstract class UIUser {
         }
 
         showMessage("El valor de todos los prodcutos es igual a: "+ precioTelevisores + precioLavadoras + precioElectrodomesticos );
+    }
+    private static void hoursGame(Game[] videojuegos){
+        Game hoursGame = new Game("Temporal", 0);
+
+        for(Game game : videojuegos){
+            if(game.compareTo(hoursGame)){
+                hoursGame = game;
+            }
+        }
+        System.out.println("El video juego con mas horas estimadas es: ");
+        System.out.println(hoursGame);
+    }
+    private static void countSeriesDelivered(Game[] videojuegos){
+        int numberGames = 0;
+
+        for(Game game : videojuegos){
+            if(game.isDelivered()){
+                numberGames++;
+                game.deliver();
+            }
+        }
+        System.out.println("Hay " + numberGames + " videojuegos entregados");
+    }
+
+    private static void seriesAndSeason(Serie[] series){
+        Serie seriesAndSeason = new Serie("temporal", 0, "temporal", "temporal");
+
+        for(int i = 0; i < series.length; i++){
+            if(series[i].compareTo(seriesAndSeason)){
+                seriesAndSeason = series[i];
+            }
+        }
+        System.out.println("La serie con mas horas estimadas es: ");
+        System.out.println(seriesAndSeason);
+    }
+    private static void completingGames(Game[] games){
+        games[0] = new Game("league of Legends", 60, "Fantasia", "Riot Games");
+        games[1] = new Game("Age Of Empires II: DE", 21, "Estrategia", "Microsoft");
+        games[2] = new Game("Warcraft III", 20, "Estrategia", "Blizzard");
+        games[3] = new Game("World Of Warcraft", 100, "Fantasia", "Blizzard");
+        games[4] = new Game("Call of Dutty",80,"Estrategia", "Infinity Ward,Treyarch");
+    }
+    private static void completingSeries(Serie[] series){
+        series[0] = new Serie("The Big Bang Theory", 12, "Comedia", "Chuck Lorre, Bill Prady");
+        series[1] = new Serie("Game of Thrones", 8, "Drama", "Brian Kirk, D.B.Weiss");
+        series[2] = new Serie("Smallville", 10, "Acción", "Jerry Siegel, Joe Shuster");
+        series[3] = new Serie("Criminal minds", 15, "misterio","Jeff Davis");
+        series[4] = new Serie("Hannibal", 3, "Drama", "Bryan Fuller");
+    }
+    private static void deliverSeries(Serie[] series){
+        series[0].deliver();
+        series[3].deliver();
+        series[4].deliver();
+    }
+    private static void deliverJuegos(Game[] games){
+        games[1].deliver();
+        games[4].deliver();
+    }
+    private static void countSeriesDelivered(Serie[] series){
+        int numberSeries = 0;
+        for(Serie serie : series){
+            if(serie.isDelivered()){
+                numberSeries++;
+                serie.deliver();
+            }
+        }
+        System.out.println("Hay " + numberSeries + " series entregadas");
+    }
+
+    private static void getSeriesAndGames(){
+        Serie[] series = new Serie[5];
+        Game[] videojuegos = new Game[5];
+
+        completingSeries(series);
+        completingGames(videojuegos);
+
+        deliverSeries(series);
+        deliverJuegos(videojuegos);
+
+        System.out.println("------------------------");
+        countSeriesDelivered(series);
+        System.out.println("------------------------");
+        countSeriesDelivered(videojuegos);
+
+        System.out.println("------------------------");
+        seriesAndSeason(series);
+        System.out.println("------------------------");
+        hoursGame(videojuegos);
+
+    }
     }
 
     private static double getDouble() {
