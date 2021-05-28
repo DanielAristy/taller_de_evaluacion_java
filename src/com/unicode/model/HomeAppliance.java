@@ -33,7 +33,7 @@ public class HomeAppliance {
 
     }
 
-    private void finalPrice(){
+    public void finalPrice(){
 
     }
 
