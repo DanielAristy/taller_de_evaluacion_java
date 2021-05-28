@@ -293,6 +293,7 @@ public abstract class UIUser {
     private static void getPerson1(){
         showMessage("Datos de la persona 1\n");
         showMessage("Ingresa tu nombre");
+        getString();
         String name = getString();
         showMessage("Ingresa tu edad");
         int age = getNumber();
