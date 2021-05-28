@@ -10,9 +10,13 @@ public class WashingMachine extends HomeAppliance {
         super(basePrice, weight);
     }
 
-    public WashingMachine(double basePrice, String color, String energyConsumption, int weight, String load) {
+    public WashingMachine(double basePrice, String color, char energyConsumption, int weight, String load) {
         super(basePrice, color, energyConsumption, weight);
         this.load = load;
+    }
+    private void increasePrice(){
+        if (super.getWeight() > 30) increaseAdditionalPrice(50);
+        else increaseAdditionalPrice(0);
     }
 
     @Override

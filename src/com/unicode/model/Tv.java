@@ -12,15 +12,31 @@ public class Tv extends HomeAppliance{
         super(basePrice, weight);
     }
 
-    public Tv(double basePrice, String color, String energyConsumption, int weight, int resolution, boolean tunerTDT) {
+    public Tv(double basePrice, String color, char energyConsumption, int weight, int resolution, boolean tunerTDT) {
         super(basePrice, color, energyConsumption, weight);
         this.resolution = resolution;
         this.tunerTDT = tunerTDT;
     }
+    private double increasePricePerResolution(){
+        return getBasePrice() * 0.3;
+    }
 
+    private void increasePrice(){
+        if (getResolution() > 40){
+            increaseAdditionalPrice(increasePricePerResolution());
+        }
+    }
     @Override
     public void finalPrice() {
         super.finalPrice();
+        increasePrice();
+        increasePricePerTDT();
+    }
+
+    private void increasePricePerTDT() {
+        if (this.tunerTDT){
+            increaseAdditionalPrice(50);
+        }
     }
 
     public int getResolution() {

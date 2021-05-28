@@ -1,6 +1,7 @@
 package com.unicode.ui;
 
 import com.unicode.WorkingDay;
+import com.unicode.model.HomeAppliance;
 import com.unicode.model.Person;
 
 import java.text.DateFormat;
@@ -54,7 +55,8 @@ public abstract class UIUser {
 //        getEqualityOrDifferenceBetweenLetters();
 //        getDateAndTimeInFormat();
 //        showOptionsMenu();
-        validateUserInformation();
+//        validateUserInformation();
+        comprobate();
     }
     //Ejercicios del taler
     //1. Numero mayor o igual
@@ -313,6 +315,14 @@ public abstract class UIUser {
         person.calculateDNINumber();
 //        person.calculateDNINumber();
         System.out.println(person);
+    }
+
+    private static void comprobate(){
+        HomeAppliance appliance = new HomeAppliance(
+                0, "majenta", 'A', 79);
+        System.out.println(appliance.getColor());
+        appliance.finalPrice();
+        showMessage("" + appliance.getBasePrice());
     }
 
     private static double getDouble() {
