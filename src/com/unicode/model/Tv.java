@@ -46,4 +46,12 @@ public class Tv extends HomeAppliance{
     public boolean isTunerTDT() {
         return tunerTDT;
     }
+
+    @Override
+    public String toString() {
+        return "Tv{" +
+                "resolution=" + resolution +
+                ", tunerTDT=" + tunerTDT +
+                '}';
+    }
 }

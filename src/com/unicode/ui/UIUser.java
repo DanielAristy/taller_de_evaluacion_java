@@ -3,9 +3,12 @@ package com.unicode.ui;
 import com.unicode.WorkingDay;
 import com.unicode.model.HomeAppliance;
 import com.unicode.model.Person;
+import com.unicode.model.Tv;
+import com.unicode.model.WashingMachine;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -56,7 +59,7 @@ public abstract class UIUser {
 //        getDateAndTimeInFormat();
 //        showOptionsMenu();
 //        validateUserInformation();
-        comprobate();
+        getHomeAppliance();
     }
     //Ejercicios del taler
     //1. Numero mayor o igual
@@ -316,13 +319,40 @@ public abstract class UIUser {
 //        person.calculateDNINumber();
         System.out.println(person);
     }
+    static int precioTelevisores = 0;
+    static int precioLavadoras = 0;
+    static int precioElectrodomesticos = 0;
+    private static void getHomeAppliance(){
+        ArrayList<HomeAppliance> electrodomestico = new ArrayList<>(10);
+        electrodomestico.add(new HomeAppliance(0,"negro",'B',20));
+        electrodomestico.add(new HomeAppliance(0,"blanco",'A',18));
+        electrodomestico.add(new HomeAppliance(0,"gris",'C',16));
+        electrodomestico.add(new WashingMachine(0,"negro",'F',5,25));
+        electrodomestico.add(new WashingMachine(0,"rojo",'A',52,38));
+        electrodomestico.add(new WashingMachine(0,"azul",'D',10,15));
+        electrodomestico.add(new HomeAppliance(0,"blanco",'E',55));
+        electrodomestico.add(new Tv(0,"rojo",'E',12,15,true));
+        electrodomestico.add(new Tv(0,"gris",'C',72,24,false));
+        electrodomestico.add(new Tv(0,"azul",'A',21,48,true));
 
-    private static void comprobate(){
-        HomeAppliance appliance = new HomeAppliance(
-                0, "majenta", 'A', 79);
-        System.out.println(appliance.getColor());
-        appliance.finalPrice();
-        showMessage("" + appliance.getBasePrice());
+        for (int i = 0; i < electrodomestico.size(); i++) {
+            if (electrodomestico.get(i) instanceof Tv) {
+                electrodomestico.get(i).finalPrice();
+                precioTelevisores += electrodomestico.get(i).getBasePrice();
+                System.out.println(electrodomestico.get(i));
+
+            } else if (electrodomestico.get(i) instanceof WashingMachine) {
+                electrodomestico.get(i).finalPrice();
+                precioLavadoras += electrodomestico.get(i).getBasePrice();
+                System.out.println(electrodomestico.get(i));
+            } else if (electrodomestico.get(i) instanceof HomeAppliance) {
+                electrodomestico.get(i).finalPrice();
+                precioElectrodomesticos += electrodomestico.get(i).getBasePrice();
+                System.out.println(electrodomestico.get(i));
+            }
+        }
+
+        showMessage("El valor de todos los prodcutos es igual a: "+ precioTelevisores + precioLavadoras + precioElectrodomesticos );
     }
 
     private static double getDouble() {

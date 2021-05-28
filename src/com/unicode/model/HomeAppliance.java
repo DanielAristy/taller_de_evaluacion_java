@@ -119,4 +119,14 @@ public class HomeAppliance {
     public static String[] getColores() {
         return colores;
     }
+
+    @Override
+    public String toString() {
+        return "HomeAppliance{" +
+                "basePrice=" + basePrice +
+                ", color='" + color + '\'' +
+                ", energyConsumption=" + energyConsumption +
+                ", weight=" + weight +
+                '}';
+    }
 }

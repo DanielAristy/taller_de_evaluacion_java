@@ -1,7 +1,7 @@
 package com.unicode.model;
 
 public class WashingMachine extends HomeAppliance {
-    private String load;
+    private int load;
 
     public WashingMachine() {
     }
@@ -10,18 +10,25 @@ public class WashingMachine extends HomeAppliance {
         super(basePrice, weight);
     }
 
-    public WashingMachine(double basePrice, String color, char energyConsumption, int weight, String load) {
+    public WashingMachine(double basePrice, String color, char energyConsumption, int weight, int load) {
         super(basePrice, color, energyConsumption, weight);
         this.load = load;
     }
     private void increasePrice(){
-        if (super.getWeight() > 30) increaseAdditionalPrice(50);
+        if (this.load > 30) increaseAdditionalPrice(50);
         else increaseAdditionalPrice(0);
     }
 
     @Override
     public void finalPrice(){
         super.finalPrice();
+        increasePrice();
     }
 
+    @Override
+    public String toString() {
+        return "WashingMachine{" +
+                "load=" + load +
+                '}';
+    }
 }
