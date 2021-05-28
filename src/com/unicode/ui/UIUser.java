@@ -43,19 +43,19 @@ public abstract class UIUser {
 
 
     public static void showMenu() throws Exception {
-//        greaterOrEqualNumber();
-//        calculateAreaOfACircle();
-//        calculateIVA();
-//        getOddAndEvenNumbers();
-//        numberGreaterThanOrEqualToZero();
-//        getWorkDay();
-//        getModifiedString();
-//        getTextWithoutSpaces();
-//        getPhraseLengthAndNumberOfVowels();
-//        getEqualityOrDifferenceBetweenLetters();
-//        getDateAndTimeInFormat();
-//        showOptionsMenu();
-//        validateUserInformation();
+        greaterOrEqualNumber();
+        calculateAreaOfACircle();
+        calculateIVA();
+        getOddAndEvenNumbers();
+        numberGreaterThanOrEqualToZero();
+        getWorkDay();
+        getModifiedString();
+        getTextWithoutSpaces();
+        getPhraseLengthAndNumberOfVowels();
+        getEqualityOrDifferenceBetweenLetters();
+        getDateAndTimeInFormat();
+        showOptionsMenu();
+        validateUserInformation();
         getHomeAppliance();
         getSeriesAndGames();
     }
@@ -440,7 +440,6 @@ public abstract class UIUser {
         System.out.println("------------------------");
         hoursGame(videojuegos);
 
-    }
     }
 
     private static double getDouble() {
